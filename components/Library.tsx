@@ -1,9 +1,24 @@
 "use client";
 import { TbPlaylist } from "react-icons/tb";
 import { AiOutlinePlus } from "react-icons/ai";
+import useAuthModal from "@/hooks/useAuthModal";
+import { useUser } from "@/hooks/useUser";
+import useUploadModal from "@/hooks/useUploadModal";
 
 const Library = () => {
-  const onClick = () => {};
+  const { user } = useUser();
+  const authModal = useAuthModal();
+  const uploadModal = useUploadModal();
+
+  const onClick = () => {
+    if (!user) {
+      authModal.onOpen();
+    }
+
+    // TODO: check for subscription
+
+    return uploadModal.onOpen();
+  };
 
   return (
     <div className="flex flex-col">
@@ -13,15 +28,13 @@ const Library = () => {
           <p className="font-medium text-md text-neutral-400">Thư viện</p>
         </div>
         <AiOutlinePlus
-            size={20}
-            className="text-neutral-400 cursor-pointer hover:text-white transition"
-            onClick={onClick}
+          size={20}
+          className="text-neutral-400 cursor-pointer hover:text-white transition"
+          onClick={onClick}
         />
       </div>
 
-      <div className="flex flex-col gap-y-2 mt-4 px-3">
-        Danh sách bài hát!
-      </div>
+      <div className="flex flex-col gap-y-2 mt-4 px-3">Danh sách bài hát!</div>
     </div>
   );
 };
