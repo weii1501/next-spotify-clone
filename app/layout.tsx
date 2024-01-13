@@ -25,7 +25,7 @@ export default async function RootLayout({
 
   const userSongs = await getSongsByUserID();
 
-  console.log(userSongs);
+  // console.log(userSongs);
 
   return (
     <html lang="vn">

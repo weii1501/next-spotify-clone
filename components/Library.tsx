@@ -7,6 +7,7 @@ import useUploadModal from "@/hooks/useUploadModal";
 import { Song } from "@/types";
 import React from "react";
 import getSongsByUserID from "@/actions/getSongsByUserID";
+import MediaItem from "./MediaItem";
 
 interface LibraryProps {
     songs: Song[];
@@ -43,7 +44,11 @@ const Library: React.FC<LibraryProps> = ({ songs }) => {
 
       <div className="flex flex-col gap-y-2 mt-4 px-3">
         {songs?.map((song) => (
-            <div>{song.title}</div>
+            <MediaItem 
+                onClick={() => {}}
+                data={song}
+                key={song.id}
+            />
         ))}
       </div>
     </div>

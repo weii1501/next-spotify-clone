@@ -3,6 +3,7 @@ import { Song } from "@/types";
 import Image from "next/image";
 import React from "react";
 import PlayButton from "./PlayButton";
+import Link from "next/link";
 
 interface SongItemProps {
   data: Song;
@@ -28,7 +29,7 @@ const SongItem: React.FC<SongItemProps> = ({ data, onClick }) => {
       <div className="flex flex-col items-start w-full py-4 px-1 gap-y-1">
         <p className="font-semibold truncate w-full">{data.title}</p>
         <p className="text-sm text-neutral-400 truncate w-full pb-4">
-          By {data.author}
+            {data.author}
         </p>
       </div>
       <div className="absolute bottom-24 right-5">
